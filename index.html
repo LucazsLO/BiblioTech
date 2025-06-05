@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale.1.0">
+    <title>BiblioTech - Sistema de Biblioteca Digital</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo-link"> <div class="logo">
+                        <i class="fas fa-book"></i>
+                        <h1>BiblioTech</h1>
+                    </div>
+                </a>
+                <nav class="header-nav">
+                    <div class="header-actions">
+                        <select id="userType" class="user-select" aria-label="Tipo de Usuário">
+                            <option value="student">Estudante</option>
+                            <option value="librarian">Bibliotecário</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+
+                        <i class="fas fa-bell notification-icon" role="button" aria-label="Notificações"></i>
+                        <div class="user-avatar">
+                            <span id="userInitial">E</span>
+                        </div>
+                        <span id="userLabel" class="user-label">Estudante</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-section="home">
+                        <i class="fas fa-home"></i>
+                        <span>Início</span>
+                    </li>
+                    <li class="nav-item" data-section="my-loans">
+                        <i class="fas fa-book-reader"></i>
+                        <span>Meus Empréstimos</span>
+                    </li>
+                    <li class="nav-item" data-section="wishlist">
+                        <i class="fas fa-heart"></i>
+                        <span>Lista de Desejos</span>
+                    </li>
+                    <li class="nav-item" data-section="my-profile">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Meu Perfil</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="container">
+                <section class="welcome-section content-section" id="home-section">
+                    <h2>Bem-vindo à Biblioteca Digital</h2>
+                    <p>Explore nosso acervo de mais de 12.000 livros digitais e físicos</p>
+                    <section class="search-section">
+                        <div class="search-container">
+                            <div class="search-input-wrapper">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" id="searchInput" placeholder="Buscar livros, autores, categorias..." class="search-input">
+                            </div>
+                            <button id="searchBtn" class="search-btn">Buscar</button>
+                        </div>
+                    </section>
+                    <section class="stats-section">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <div class="stat-info">
+                                        <p class="stat-label">Total de Livros</p>
+                                        <p class="stat-value">12.485</p>
+                                    </div>
+                                    <i class="fas fa-book stat-icon blue"></i>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <div class="stat-info">
+                                        <p class="stat-label">Usuários Ativos</p>
+                                        <p class="stat-value">2.341</p>
+                                    </div>
+                                    <i class="fas fa-users stat-icon green"></i>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <div class="stat-info">
+                                        <p class="stat-label">Empréstimos Hoje</p>
+                                        <p class="stat-value">87</p>
+                                    </div>
+                                    <i class="fas fa-chart-bar stat-icon purple"></i>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <div class="stat-info">
+                                        <p class="stat-label">Livros Disponíveis</p>
+                                        <p class="stat-value">9.234</p>
+                                    </div>
+                                    <i class="fas fa-check-circle stat-icon orange"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="books-section">
+                        <div class="section-header">
+                            <h3>Livros Populares</h3>
+                            <button class="view-all-btn btn-outline">Ver Todos</button>
+                        </div>
+                        <div class="books-grid" id="popularBooksGrid">
+                            <p class="loading-message">Carregando livros populares...</p>
+                        </div>
+                    </section>
+
+                    <section class="books-section">
+                        <div class="section-header">
+                            <h3>Últimas Aquisições</h3>
+                            <button class="view-all-btn btn-outline">Ver Todos</button>
+                        </div>
+                        <div class="books-grid" id="latestAcquisitionsGrid">
+                            <p class="loading-message">Carregando últimas aquisições...</p>
+                        </div>
+                    </section>
+
+                    <section class="books-section">
+                        <div class="section-header">
+                            <h3>Recomendações Para Você</h3>
+                            <button class="view-all-btn btn-outline">Ver Todos</button>
+                        </div>
+                        <div class="books-grid" id="recommendedBooksGrid">
+                            <p class="loading-message">Carregando recomendações...</p>
+                        </div>
+                    </section>
+
+                    <section class="books-section">
+                        <div class="section-header">
+                            <h3>Livros em Destaque</h3>
+                            <button class="view-all-btn btn-outline">Ver Todos</button>
+                        </div>
+
+                        <div class="books-grid" id="booksGrid">
+                            <p id="loadingFeaturedBooks" class="loading-message">Carregando livros...</p>
+                        </div>
+                    </section>
+
+                    <section class="actions-section">
+                        <div class="actions-grid" id="actionsGrid">
+                        </div>
+                    </section>
+                </section>
+
+                <section class="my-loans-section content-section hidden" id="my-loans-section">
+                    <h2>Meus Empréstimos</h2>
+                    <div id="loansGrid" class="books-grid">
+                        <p class="empty-state-message" id="emptyLoans">Você não possui livros emprestados no momento.</p>
+                    </div>
+                </section>
+
+                <section class="wishlist-section content-section hidden" id="wishlist-section">
+                    <h2>Lista de Desejos</h2>
+                    <div id="wishlistGrid" class="books-grid">
+                        <p class="empty-state-message" id="emptyWishlist">Sua lista de desejos está vazia.</p>
+                    </div>
+                </section>
+
+                <section class="my-profile-section content-section hidden" id="my-profile-section">
+                    <h2>Meu Perfil</h2>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <span id="profileUserInitial">E</span>
+                        </div>
+                        <div class="profile-details-grid">
+            <p class="profile-detail-item">
+                <i class="fas fa-user"></i> <strong>Nome:</strong> <span id="profileUserName">Estudante Exemplo</span>
+            </p>
+            <p class="profile-detail-item">
+                <i class="fas fa-envelope"></i> <strong>Email:</strong> <span id="profileUserEmail">estudante@example.com</span>
+            </p>
+            <p class="profile-detail-item">
+                <i class="fas fa-id-badge"></i> <strong>Tipo de Usuário:</strong> <span id="profileUserType">Estudante</span>
+            </p>
+            <p class="profile-detail-item">
+                <i class="fas fa-hashtag"></i> <strong>Matrícula:</strong> <span id="profileUserMatricula">123456789</span>
+            </p>
+        </div>
+
+        <div class="profile-actions">
+            <button class="btn btn-primary edit-profile-btn" aria-label="Editar informações do perfil">
+                <i class="fas fa-edit"></i> Editar Perfil
+            </button>
+            </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
